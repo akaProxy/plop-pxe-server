@@ -23,8 +23,6 @@ VARIABLES
 
 PIIP - the IP address of your device/rpi
 
-NMSK - the netmask of your network (use a /24 network for best performace)
-
 Defaults: 
 
 eth0    10.0.0.1  
