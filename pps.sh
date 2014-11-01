@@ -78,20 +78,16 @@ use_wget() {
 }
 
 get_permission() {
-   while [[ $ansr != "n" || $ansr != "N" || $ansr != "y" || $ansr != "Y" ]]; do
-         read ansr
-            if [[ $ansr == "n" || $ansr == "N" ]]; then
-                   printf "\n\nexiting....\n"
-                   sleep 1
-                   exit
-              elif [[ $ansr == "y" || $ansr == "Y" ]]; then
-                   printf "\ncontinuing....\n\n"
-                   break
-              else
-                   printf "\n\n not a valid entry, please try again."
-                   printf "\n(y/n)?\n"
-            fi
-   done
+ while true; do
+     read answer
+     case $answer in
+          [Yy] ) break;;
+          [Yy][eE][sS] ) break;;
+          [nN] ) printf "\n Exiting Now \n"; exit;;
+          [Nn][oO] ) printf "\n Exiting Now \n"; exit;;
+            *  ) printf "\n Not Valid, Answer y or n\n";;
+     esac
+ done
 }
 
 printf "\nTo run this script properly it need to run as root and have a working internet connection."
@@ -112,7 +108,7 @@ if [ ! -e /var/log/rpi-pxe ]; then
 
    apt-get update
    get_aptpkg dnsmasq
-   get_aptpkg syslinux
+   get_aptpkg syslinux-common
 
  else
 
