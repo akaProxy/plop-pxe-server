@@ -15,8 +15,10 @@ It also comes with the Plop Linux OS as a boot option. For more information
 about plop go the main website http://www.plop.at/
 
 
-To install run as ROOT ./pps.sh
-
+To install run as ROOT 
+```
+root@OpenWrt:~# ./pps.sh
+```
 ## VARIABLES 
 
 PIIP - the IP address of your device/rpi
