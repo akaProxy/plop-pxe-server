@@ -187,10 +187,10 @@ EOL
 
 
 # Check if archive already downloaded
-if [ ! -e /tmp/tgz/ploplinux-4.2.2.tgz ]; then
+if [ ! -e /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz ]; then
   mkdir /tmp/tgz > /dev/null 2>&1
   check_website http://download.plop.at
-  use_wget /tmp/tgz http://download.plop.at/files/ploplinux/4.2.2/ploplinux-4.2.2/ploplinux-4.2.2.tgz
+  use_wget /tmp/tgz http://download.plop.at/ploplinux/4.3.0/live/ploplinux-4.3.0-x86_64.tar.gz
 fi
 
 # extract tar gzip archive, delete archive if extraction fails
