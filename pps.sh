@@ -194,7 +194,7 @@ if [ ! -e /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz ]; then
 fi
 
 # extract tar gzip archive, delete archive if extraction fails
-if ! tar zxvf /tmp/tgz/ploplinux-4.2.2.tgz -C /tmp/tgz/; then
+if ! tar zxvf /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz -C /tmp/tgz/; then
   printf "\n\ntargz archive failed to extract, possible file corruption\nRe-download it"
   printf "\nby running script again.\n\n"
   printf "\ncleaning up temp download folder\n...."
@@ -203,8 +203,8 @@ if ! tar zxvf /tmp/tgz/ploplinux-4.2.2.tgz -C /tmp/tgz/; then
 fi
 
 # move extracted files from archive to tftp folder
-cp -r /tmp/tgz/ploplinux-4.2.2/* /tftpboot/ploplinux-netboot/
-rm -r /tmp/tgz/ploplinux-4.2.2/
+cp -r /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz/* /tftpboot/ploplinux-netboot/
+rm -r /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz/
 printf "You will need to use chmod +x /media/ploplinux-netboot/ploplinux/bin/*\nto be able to use the plophelp command\n\n" >> /tftpboot/ploplinux-netboot/ploplinux/bin/welcome.txt
 
 # Create tftpfilelist for use by the pxe boot options
