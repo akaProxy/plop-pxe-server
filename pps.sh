@@ -131,55 +131,14 @@ cp /usr/lib/syslinux/{memdisk,menu.c32,vesamenu.c32,pxelinux.0} /tftpboot
 cat > /tftpboot/pxelinux.cfg/default <<EOL
 
 default vesamenu.c32
-prompt 0
-timeout 100
+PROMPT 0
+TIMEOUT 1
+TOTALTIEMOUT 2
 
-menu title Welcome to Plop Linux
-
-menu color border       37;40   #00000000 #00000000 none
-menu color title        1;37;40 #00000000 #00000000 none
-menu color tabmsg       40;37   #88888888 #00000000 none
-menu color sel          1;37;42 #ffffffff #ff808080 none
-menu color unsel        1;40;32 #ff00ff00 #00000000 none
-
-
-menu separator
-
-label hd
-    menu label Boot harddisk
-    localboot 0x80
-    append -
-
-menu separator
-
-label plp
-    menu label Plop Boot Manager
-    linux ploplinux-netboot/syslinux/plop/plpbt.bin
-
-label plpkexec
-    menu label PlopKexec Boot Manager
-    kernel ploplinux-netboot/syslinux/plop/plopkexec
-
-label Memtest
-    menu label Memtest
-    kernel ploplinux-netboot/memtest
-
-menu separator
-
-# boot from TFTP
-label linux-tftp
-    menu label Plop Linux - TFTP
-    kernel ploplinux-netboot/syslinux/kernel/bzImage
-    append initrd=ploplinux-netboot/syslinux/kernel/initramfs.gz vga=1 tftpboot=$PIIP|ploplinux-netboot/tftpfilelist dir=/ploplinux-netboot/ploplinux
-
-#------------------------------------------------------------------------------------------------------------------------------------------
-# To use the option below you must have a working web server on the pi hosting the necessary files
-#
-#boot from HTTP
-#label linux-http
-#    menu label Plop Linux - HTTP
-#    kernel ploplinux-netboot/syslinux/kernel/bzImage
-#    append initrd=ploplinux-netboot/syslinux/kernel/initramfs.gz vga=1 url=http://$PIIP/ploplinux-netboot|/webfilelist
+LABEL plp
+    MENU DEFAULT
+    MENU LABEL Subliminal message...
+    linux ploplinux-netboot/Windows/plpbt.bin
 
 EOL
 #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
