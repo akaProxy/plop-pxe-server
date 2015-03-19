@@ -194,7 +194,7 @@ if [ ! -e /tmp/tgz/plpbt-5.0.15.zip ]; then
 fi
 
 # extract tar gzip archive, delete archive if extraction fails
-if ! unzip /tmp/tgz/plpbt-5.0.15.zip; then
+if ! unzip /tmp/tgz/plpbt-5.0.15.zip -d /tmp/tgz; then
   printf "\n\ntargz archive failed to extract, possible file corruption\nRe-download it"
   printf "\nby running script again.\n\n"
   printf "\ncleaning up temp download folder\n...."
@@ -203,8 +203,8 @@ if ! unzip /tmp/tgz/plpbt-5.0.15.zip; then
 fi
 
 # move extracted files from archive to tftp folder
-cp -r /tmp/tgz/plpbt-5.0.15.zip/* /tftpboot/ploplinux-netboot/
-rm -r /tmp/tgz/plpbt-5.0.15.zip/
+cp -r /tmp/tgz/plpbt-5.0.15/* /tftpboot/ploplinux-netboot/
+rm -r /tmp/tgz/plpbt-5.0.15/
 printf "You will need to use chmod +x /media/ploplinux-netboot/ploplinux/bin/*\nto be able to use the plophelp command\n\n" >> /tftpboot/ploplinux-netboot/ploplinux/bin/welcome.txt
 
 # Create tftpfilelist for use by the pxe boot options
