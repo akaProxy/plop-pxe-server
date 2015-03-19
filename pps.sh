@@ -187,14 +187,14 @@ EOL
 
 
 # Check if archive already downloaded
-if [ ! -e /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz ]; then
+if [ ! -e /tmp/tgz/plpbt-5.0.15.zip ]; then
   mkdir /tmp/tgz > /dev/null 2>&1
   check_website http://download.plop.at
-  use_wget /tmp/tgz http://download.plop.at/ploplinux/4.3.0/live/ploplinux-4.3.0-x86_64.tar.gz
+  use_wget /tmp/tgz http://download.plop.at/files/bootmngr/plpbt-5.0.15.zip
 fi
 
 # extract tar gzip archive, delete archive if extraction fails
-if ! tar zxvf /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz -C /tmp/tgz/; then
+if ! unzip /tmp/tgz/plpbt-5.0.15.zip; then
   printf "\n\ntargz archive failed to extract, possible file corruption\nRe-download it"
   printf "\nby running script again.\n\n"
   printf "\ncleaning up temp download folder\n...."
@@ -203,8 +203,8 @@ if ! tar zxvf /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz -C /tmp/tgz/; then
 fi
 
 # move extracted files from archive to tftp folder
-cp -r /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz/* /tftpboot/ploplinux-netboot/
-rm -r /tmp/tgz/ploplinux-4.3.0-x86_64.tar.gz/
+cp -r /tmp/tgz/plpbt-5.0.15.zip/* /tftpboot/ploplinux-netboot/
+rm -r /tmp/tgz/plpbt-5.0.15.zip/
 printf "You will need to use chmod +x /media/ploplinux-netboot/ploplinux/bin/*\nto be able to use the plophelp command\n\n" >> /tftpboot/ploplinux-netboot/ploplinux/bin/welcome.txt
 
 # Create tftpfilelist for use by the pxe boot options
